@@ -1,0 +1,87 @@
+import React from "react";
+
+const userDetails = [
+  {
+    id: 1,
+    Name: "Annette Murphy",
+    email: "randomemail1@gmail.com",
+    Phone: "123456789",
+  },
+  {
+    id: 2,
+    Name: "Theresa Watson",
+    email: "randomemail2@gmail.com",
+
+    Phone: "123456789",
+  },
+  {
+    id: 3,
+    Name: "Cody Howard",
+    email: "randomemail3@gmail.com",
+    Phone: "123456789",
+  },
+  {
+    id: 4,
+    Name: "Max Lane",
+    email: "randomemail4@gmail.com",
+    Phone: "123456789",
+  },
+  {
+    id: 5,
+    Name: "Marvin FIsher",
+    email: "randomemail5@gmail.com",
+    Phone: "123456789",
+  },
+  {
+    id: 6,
+    Name: "Brooklyn Mccoy",
+    email: "randomemail6@gmail.com",
+    Phone: "123456789",
+  },
+];
+
+const DetailsCard = () => {
+  return (
+    <div
+      className="maincont"
+      style={{
+        width: "400px",
+        margin: "auto",
+        border: "1px solid red",
+      }}
+    >
+      {userDetails.map((e) => (
+        <div
+          className="contactCard"
+          key={e.id}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            // height: "120px",
+            fontSize: "12px",
+            justifyContent: "center",
+          }}
+        >
+          <h3 style={{ marginBottom: "0px" }}>{e.Name}</h3>
+          <h5>{e.email}</h5>
+          <h5 className="number">{e.Phone}</h5>
+
+          <button
+            style={{
+              fontSize: "15px",
+              height: "20px",
+              width: "150px",
+              margin: "auto",
+              marginBottom: "5px",
+            }}
+          >
+            Expand
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default DetailsCard;

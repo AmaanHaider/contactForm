@@ -1,59 +1,78 @@
-import React from "react";
-
-const userDetails =[
-
-    {
-        id:1,
-        Name:"Annette Murphy",
-        email:"randomemail1@gmail.com"
-    },
-    {
-        id:2,
-        Name:"Theresa Watson",
-        email:"randomemail2@gmail.com"
-    },
-    {
-        id:3,
-        Name:"Cody Howard",
-        email:"randomemail3@gmail.com"
-    },
-    {
-        id:4,
-        Name:"Max Lane",
-        email:"randomemail4@gmail.com"
-    },
-    {
-        id:5,
-        Name:"Marvin FIsher",
-        email:"randomemail5@gmail.com"
-    },
-    {
-        id:6,
-        Name:"Brooklyn Mccoy",
-        email:"randomemail6@gmail.com"
-    },
-]
+import React, { useState } from "react";
 
 const DetailsCard = () => {
+  const [details, setDetails] = useState({ name: "", email: "", number: "" });
+  const [data, setData] = useState([]);
+
+  const handleChange = (e) => {
+    setDetails({ ...details, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const updateDetails = [
+      ...data,
+      {
+        name: details.name,
+        email: details.email,
+        number: details.number,
+      },
+    ];
+    setData(updateDetails);
+  };
+
   return (
-    <div className="maincont" style={{
-        width: "400px",
-        margin: "auto",
-        border: "1px solid red"
-    }}>
-      {userDetails.map((e) => (
-        <div className="contactCard" key={e.id} style={{
+    <div className="conatiner" style={{ margin: "auto" }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          border: "1px solid red",
+          margin: "auto",
+          gap: "2%",
+        }}
+      >
+        <input
+          type="text"
+          placeholder="ENTER YOUR NAME"
+          onChange={handleChange}
+        />
+        <input
+          type="email"
+          placeholder="ENTER YOUR EMAIL"
+          onChange={handleChange}
+        />
+        <input
+          type="tel"
+          placeholder="ENTER YOUR MUMBER"
+          onChange={handleChange}
+        />
 
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"
+        <button
+          style={{
+            backgroundColor: "black",
+            color: "white",
+          }}
+        >
+          ADD DETAILS
+        </button>
+      </form>
 
-
-
-        }}>
-            <h1>{e.Name}</h1>
-            <h5>{e.email}</h5>
-        </div>
-      ))
-      }
+      <div
+        style={{
+          width: "200px",
+          height: "70px",
+          border: "1px solid red",
+          margin: "auto",
+        }}
+      >
+        {
+            data.map((e)=>(
+                <h1>{e.name}</h1>
+            ))
+        }
+      </div>
     </div>
   );
 };
