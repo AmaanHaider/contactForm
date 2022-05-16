@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ContactCard from "./ContactCard";
 
 const DetailsCard = () => {
   const [details, setDetails] = useState({ name: "", email: "", number: "" });
@@ -25,7 +26,7 @@ const DetailsCard = () => {
   return (
     <div className="conatiner" style={{ margin: "auto" }}>
       <form
-        onSubmit={handleSubmit}
+       onSubmit={handleSubmit}
         style={{
           display: "flex",
           border: "1px solid red",
@@ -59,19 +60,10 @@ const DetailsCard = () => {
         </button>
       </form>
 
-      <div
-        style={{
-          width: "200px",
-          height: "70px",
-          border: "1px solid red",
-          margin: "auto",
-        }}
-      >
-        {
-            data.map((e)=>(
-                <h1>{e.name}</h1>
-            ))
-        }
+      <div>
+        {data.map((e) => (
+          <ContactCard details={e} />
+        ))}
       </div>
     </div>
   );
